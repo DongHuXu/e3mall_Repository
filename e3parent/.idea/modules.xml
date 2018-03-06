@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../e3common/e3common.iml" filepath="$PROJECT_DIR$/../e3common/e3common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../e3manager/e3manager.iml" filepath="$PROJECT_DIR$/../e3manager/e3manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../e3manager_controller/e3manager_controller.iml" filepath="$PROJECT_DIR$/../e3manager_controller/e3manager_controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../e3manager/e3manager_dao/e3manager_dao.iml" filepath="$PROJECT_DIR$/../e3manager/e3manager_dao/e3manager_dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../e3manager/e3manager_interface/e3manager_interface.iml" filepath="$PROJECT_DIR$/../e3manager/e3manager_interface/e3manager_interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../e3manager/e3manager_pojo/e3manager_pojo.iml" filepath="$PROJECT_DIR$/../e3manager/e3manager_pojo/e3manager_pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../e3manager/e3manager_service/e3manager_service.iml" filepath="$PROJECT_DIR$/../e3manager/e3manager_service/e3manager_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e3parent.iml" filepath="$PROJECT_DIR$/e3parent.iml" />
+    </modules>
+  </component>
+</project>
