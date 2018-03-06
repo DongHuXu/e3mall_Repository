@@ -3,6 +3,7 @@ package cn.itcast.service.impl;
 import cn.itcast.DataGridResult;
 import cn.itcast.mapper.TbItemMapper;
 import cn.itcast.pojo.TbItem;
+import cn.itcast.pojo.TbItemExample;
 import cn.itcast.service.ItemService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -25,7 +26,8 @@ public class ItemServiceImpl implements ItemService {
     public DataGridResult findAll(int page ,int rows) {
 
         PageHelper.startPage(page,rows);
-        List<TbItem> tbItems = tbItemMapper.selectAll();
+        TbItemExample example = new TbItemExample();
+        List<TbItem> tbItems = tbItemMapper.selectByExample(example);
         DataGridResult dataGridResult = new DataGridResult();
         dataGridResult.setRows(tbItems);
         dataGridResult.setTotal((int) new PageInfo<>(tbItems).getTotal());
