@@ -1,4 +1,4 @@
-package cn.itcast;
+package cn.itcast.pojo;
 
 import java.io.Serializable;
 

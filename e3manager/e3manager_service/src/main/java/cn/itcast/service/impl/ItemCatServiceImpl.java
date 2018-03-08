@@ -1,6 +1,6 @@
 package cn.itcast.service.impl;
 
-import cn.itcast.CatNode;
+import cn.itcast.pojo.CatNode;
 import cn.itcast.mapper.TbItemCatMapper;
 import cn.itcast.pojo.TbItemCat;
 import cn.itcast.pojo.TbItemCatExample;

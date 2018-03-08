@@ -1,6 +1,6 @@
 package cn.itcast.service;
 
-import cn.itcast.CatNode;
+import cn.itcast.pojo.CatNode;
 
 import java.util.List;
 

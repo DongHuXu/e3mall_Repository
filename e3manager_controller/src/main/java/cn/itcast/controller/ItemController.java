@@ -1,6 +1,7 @@
 package cn.itcast.controller;
 
-import cn.itcast.DataGridResult;
+import cn.itcast.pojo.DataGridResult;
+import cn.itcast.pojo.E3Result;
 import cn.itcast.pojo.TbItem;
 import cn.itcast.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,4 +30,10 @@ public class ItemController {
         return dataGridResult;
     }
 
+    @RequestMapping("/item/save")
+    @ResponseBody
+    public E3Result saveItem(TbItem item,String desc){
+        E3Result e3Result = itemService.saveItem(item, desc);
+        return  e3Result;
+    }
 }

@@ -1,6 +1,6 @@
 package cn.itcast.controller;
 
-import cn.itcast.CatNode;
+import cn.itcast.pojo.CatNode;
 import cn.itcast.service.ItemCatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
