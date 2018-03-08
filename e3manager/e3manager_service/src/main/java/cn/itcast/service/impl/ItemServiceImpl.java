@@ -56,4 +56,29 @@ public class ItemServiceImpl implements ItemService {
         tbItemDescMapper.insert(tbItemDesc);
         return E3Result.ok();
     }
+
+    @Override
+    public TbItemDesc updateitem(Long id) {
+        TbItemDesc tbItemDesc = tbItemDescMapper.selectByPrimaryKey(id);
+        return tbItemDesc;
+    }
+
+    @Override
+    public E3Result deleteItem(String ids,Byte status) {
+        if (null!=ids&&ids.trim().length()>0){
+            String[] split = ids.split(",");
+            for (String s : split) {
+                TbItemExample tbItemExample = new TbItemExample();
+                TbItem tbItem = new TbItem();
+                long itemId = Long.parseLong(s);
+                tbItemExample.createCriteria().andIdEqualTo(itemId);
+                tbItem.setStatus(status);
+                tbItem.setUpdated(new Date());
+                tbItemMapper.updateByExampleSelective(tbItem,tbItemExample);
+            }
+
+        }
+        return E3Result.ok();
+    }
+
 }
