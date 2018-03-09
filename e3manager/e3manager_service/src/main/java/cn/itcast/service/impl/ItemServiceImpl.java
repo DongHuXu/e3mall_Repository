@@ -64,6 +64,24 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public E3Result updateitem(TbItem tbItem, String desc) {
+
+        TbItem tbItem1 = tbItemMapper.selectByPrimaryKey(tbItem.getId());
+        tbItem.setUpdated(new Date());
+        tbItem.setCreated(tbItem1.getCreated());
+        tbItem.setStatus(tbItem1.getStatus());
+        tbItemMapper.updateByPrimaryKey(tbItem);
+        TbItemDesc tbItemDesc1 = tbItemDescMapper.selectByPrimaryKey(tbItem.getId());
+        TbItemDesc tbItemDesc = new TbItemDesc();
+        tbItemDesc.setItemDesc(desc);
+        tbItemDesc.setCreated(tbItemDesc1.getCreated());
+        tbItemDesc.setUpdated(new Date());
+        tbItemDesc.setItemId(tbItem1.getId());
+        tbItemDescMapper.updateByPrimaryKey(tbItemDesc);
+        return E3Result.ok();
+    }
+
+    @Override
     public E3Result deleteItem(String ids,Byte status) {
         if (null!=ids&&ids.trim().length()>0){
             String[] split = ids.split(",");

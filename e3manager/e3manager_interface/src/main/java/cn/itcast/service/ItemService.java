@@ -15,6 +15,8 @@ public interface ItemService {
 
     TbItemDesc updateitem(Long id);
 
+    E3Result updateitem(TbItem tbItem,String desc);
+
     E3Result deleteItem(String ids,Byte status);
 
 }

@@ -7,6 +7,7 @@ import cn.itcast.pojo.TbItemDesc;
 import cn.itcast.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,6 +34,7 @@ public class ItemController {
      * @param page
      * @param rows
      * @return
+     *
      */
     @RequestMapping("/item/list")
     @ResponseBody
@@ -56,18 +58,32 @@ public class ItemController {
     }
 
     /**
-     * 修改商品
-     * @param itemId
+     * 更新商品
+     * @param item
+     * @param desc
      * @return
-     * /  /rest/item/query/item/desc/152052149514427
+     */
+    @RequestMapping("/rest/item/update")
+    @ResponseBody
+    public E3Result updateItem(TbItem item,String desc){
+        E3Result e3Result = itemService.updateitem(item,desc);
+        return  e3Result;
+    }
+
+    /**
+     * 商品描述回显
+     * @param id
+     * @return
+     * /rest/item/query/item/desc/152052149514427
      */
 
-    @RequestMapping("/rest/item/query/item/desc/")
+    @RequestMapping("/rest/item/query/item/desc/{id}")
     @ResponseBody
-    public TbItemDesc updateItem(Long itemId){
-        TbItemDesc tbItemDesc = itemService.updateitem(itemId);
-        return  tbItemDesc;
+    public E3Result findItem(@PathVariable long id){
+        TbItemDesc tbItemDesc = itemService.updateitem(id);
+        return  E3Result.ok(tbItemDesc);
     }
+
     private  Byte status;
 
     /**
