@@ -9,6 +9,8 @@
   <modules>
     <module>../e3common</module>
     <module>../e3manager</module>
+    <module>../e3content</module>
+    <module>../e3content_protal_web</module>
   </modules>
 
   <name>Maven</name>
