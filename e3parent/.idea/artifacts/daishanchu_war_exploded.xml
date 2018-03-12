@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="daishanchu:war exploded">
+    <output-path>$PROJECT_DIR$/daishanchu/target/daishanchu</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="daishanchu" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/daishanchu/target/daishanchu/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="daishanchu/web/Web" />
+    </root>
+  </artifact>
+</component>

@@ -42,7 +42,7 @@
 			<c:forEach items="${ad1List}" var="node" varStatus="status">
 			<li><%--${node.pic }--%>
 			  <a name="sfbest_hp_hp_focus_${status.index }" class="fore_pic trackref" href="${node.url }" target="_blank"> 
-				<img id="lunbo_1" alt="${node.title }"	src="${node.pic }">
+				<img id="lunbo_1" alt="${node.title }"	src="${node.pic}">
 			  </a>
 			</li>
 			</c:forEach>

@@ -24,10 +24,6 @@ public class IndexController {
     @RequestMapping("/index")
     public String showIndex(Model model){
         List<TbContent> list = contentService.findAll(content_categoryId);
-        System.out.println(list.size());
-        for (TbContent tbContent : list) {
-            System.out.println(tbContent.getPic());
-        }
        model.addAttribute("ad1List",list);
         return "index";
     }}

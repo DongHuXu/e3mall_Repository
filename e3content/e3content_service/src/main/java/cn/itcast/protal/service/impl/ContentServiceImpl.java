@@ -18,13 +18,14 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class ContentServiceImpl implements ContentService{
+public class ContentServiceImpl implements ContentService {
 
     @Autowired
     TbContentMapper tbContentMapper;
 
     @Autowired
     JedisClient jedisClient;
+
     @Override
     public E3Result saveContent(TbContent tbContent) {
         tbContent.setCreated(new Date());
@@ -34,7 +35,7 @@ public class ContentServiceImpl implements ContentService{
 
     @Override
     public DataGridResult findAllContent(long categoryId, int page, int rows) {
-        PageHelper.startPage(page,rows);
+        PageHelper.startPage(page, rows);
         TbContentExample tbContentExample = new TbContentExample();
         TbContentExample.Criteria criteria = tbContentExample.createCriteria();
         criteria.andCategoryIdEqualTo(categoryId);
@@ -51,8 +52,8 @@ public class ContentServiceImpl implements ContentService{
         tbContent.setUpdated(new Date());
         tbContentMapper.updateByPrimaryKeySelective(tbContent);
         try {
-            jedisClient.hdel("content-info",""+tbContent.getId());
-        }catch (Exception e){
+            jedisClient.hdel("content-info", "" + tbContent.getId());
+        } catch (Exception e) {
             e.printStackTrace();
 
         }
@@ -66,12 +67,13 @@ public class ContentServiceImpl implements ContentService{
             long id = Long.parseLong(s);
             tbContentMapper.deleteByPrimaryKey(id);
             try {
-                jedisClient.hdel("content-info",""+id);
+                jedisClient.hdel("content-info", "" + id);
 
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
 
-            }        }
+            }
+        }
         return E3Result.ok();
     }
 
@@ -80,11 +82,11 @@ public class ContentServiceImpl implements ContentService{
         try {
             String s = jedisClient.hget("content-info", "" + cid);
 
-            if (StringUtils.isNoneBlank()){
+            if (StringUtils.isNoneBlank()) {
                 List<TbContent> tbContents = JsonUtils.jsonToList(s, TbContent.class);
-                return  tbContents;
+                return tbContents;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         TbContentExample tbContentExample = new TbContentExample();
@@ -92,11 +94,11 @@ public class ContentServiceImpl implements ContentService{
         criteria.andCategoryIdEqualTo(cid);
         List<TbContent> tbContents = tbContentMapper.selectByExampleWithBLOBs(tbContentExample);
         try {
-        jedisClient.hset("content-info",""+cid ,JsonUtils.objectToJson(tbContents));
-    }catch (Exception e){
-        e.printStackTrace();
+            jedisClient.hset("content-info", "" + cid, JsonUtils.objectToJson(tbContents));
+        } catch (Exception e) {
+            e.printStackTrace();
 
+        }
+        return tbContents;
     }
-    return tbContents;
-}
 }
