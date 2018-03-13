@@ -14,7 +14,10 @@
     <file url="file://$PROJECT_DIR$/../e3manager/e3manager_service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../e3manager_controller" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/daishanchu" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../e3search" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../e3search/e3searchinterface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../e3search/e3searchservice" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../e3search_web" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

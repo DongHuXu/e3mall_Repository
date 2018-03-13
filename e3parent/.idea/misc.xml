@@ -7,6 +7,8 @@
     <file type="web" url="file://$PROJECT_DIR$/../e3manager/e3manager_service" />
     <file type="web" url="file://$PROJECT_DIR$/../e3manager_controller" />
     <file type="web" url="file://$PROJECT_DIR$/daishanchu" />
+    <file type="web" url="file://$PROJECT_DIR$/../e3search/e3searchservice" />
+    <file type="web" url="file://$PROJECT_DIR$/../e3search_web" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">

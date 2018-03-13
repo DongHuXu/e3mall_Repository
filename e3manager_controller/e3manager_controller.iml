@@ -27,6 +27,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="e3content_interface" />
     <orderEntry type="module" module-name="e3manager_pojo" />
+    <orderEntry type="module" module-name="e3searchinterface" />
     <orderEntry type="module" module-name="e3manager_interface" />
     <orderEntry type="module" module-name="e3common" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.5" level="project" />

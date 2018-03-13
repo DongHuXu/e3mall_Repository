@@ -15,6 +15,9 @@
         <module name="e3manager_interface" />
         <module name="e3manager_pojo" />
         <module name="e3manager_service" />
+        <module name="e3search_web" />
+        <module name="e3searchinterface" />
+        <module name="e3searchservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -31,6 +34,10 @@
       <module name="e3manager_pojo" target="1.7" />
       <module name="e3manager_service" target="1.8" />
       <module name="e3parent" target="1.7" />
+      <module name="e3search" target="1.7" />
+      <module name="e3search_web" target="1.7" />
+      <module name="e3searchinterface" target="1.7" />
+      <module name="e3searchservice" target="1.8" />
       <module name="WorkSpaceWeb" target="1.7" />
     </bytecodeTargetLevel>
   </component>

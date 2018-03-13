@@ -13,6 +13,9 @@
           <element id="archive" name="e3manager_pojo-1.0-SNAPSHOT.jar">
             <element id="module-output" name="e3manager_pojo" />
           </element>
+          <element id="archive" name="e3-search-interface-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="e3searchinterface" />
+          </element>
           <element id="archive" name="e3manager_interface-1.0-SNAPSHOT.jar">
             <element id="module-output" name="e3manager_interface" />
           </element>
