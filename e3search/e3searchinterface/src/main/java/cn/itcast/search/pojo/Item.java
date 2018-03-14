@@ -1,12 +1,14 @@
 package cn.itcast.search.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created with IntelliJ IDEA.
  * User: 徐冬虎
  * Date: 2018/3/13 0013
  * Time: 下午 10:25
  */
-public class Item {
+public class Item implements Serializable {
 
     private String id;
     private String title;
@@ -61,5 +63,12 @@ public class Item {
 
     public void setCategory_name(String category_name) {
         this.category_name = category_name;
+    }
+
+    public String[] getImages() {
+        if (image != null && !"".equals(image)) {
+            return image.split(",");
+        }
+        return null;
     }
 }

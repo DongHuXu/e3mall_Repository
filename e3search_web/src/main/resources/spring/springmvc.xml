@@ -21,6 +21,6 @@
     <!-- 引用dubbo服务 -->
     <dubbo:application name="e3search_web"/>
     <dubbo:registry protocol="zookeeper" address="192.168.25.128:2181"/>
-   <!-- <dubbo:reference interface="cn.itcast.search.service.ImportItem" id="importItem"/>-->
+   <dubbo:reference interface="cn.itcast.search.service.SearchResultService" id="searchResultService"/>
 
 </beans>

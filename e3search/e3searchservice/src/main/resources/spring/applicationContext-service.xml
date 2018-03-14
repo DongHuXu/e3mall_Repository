@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-   <context:component-scan base-package="cn.itcast.search.service"/>
+   <context:component-scan base-package="cn.itcast.search"/>
    <!-- 使用dubbo发布服务 -->
    <!-- 提供方应用信息，用于计算依赖关系 -->
    <dubbo:application name="e3search" />
@@ -16,5 +16,8 @@
    <!-- 声明需要暴露的服务接口 -->
   <dubbo:service
            interface="cn.itcast.search.service.ImportItem" ref="importItemService" timeout="30000"/>
+
+    <dubbo:service
+            interface="cn.itcast.search.service.SearchResultService" ref="searchResultServiceImpl" timeout="30000"/>
 
 </beans>
