@@ -5,12 +5,17 @@ import cn.itcast.pojo.*;
 import cn.itcast.mapper.TbItemMapper;
 import cn.itcast.service.ItemService;
 import cn.itcast.utils.IDUtils;
+import cn.itcast.utils.JsonUtils;
+import com.alibaba.dubbo.common.json.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
+import redis.clients.jedis.JedisCluster;
 
 import javax.annotation.Resource;
 import javax.jms.*;
@@ -27,16 +32,34 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     TbItemMapper tbItemMapper;
 
+    @Autowired
+    JedisCluster jedisCluster;
     @Resource
     Destination topicDestination;
+    @Value("${redis.itemInfo.expire}")
+    Integer redis_itemInfo_expire;
     @Override
     public TbItem findTbItemById(long id) {
-        return tbItemMapper.selectByPrimaryKey(id);
+        String s = jedisCluster.get("item_info:" + id + ":base");
+        if (StringUtils.isNotBlank(s)){
+            return JsonUtils.jsonToPojo(s,TbItem.class);
+        }
+        TbItem tbItem = tbItemMapper.selectByPrimaryKey(id);
+        jedisCluster.set("item_info:"+id+":base", JsonUtils.objectToJson(tbItem));
+        jedisCluster.expire("item_info:"+id+":base", redis_itemInfo_expire);
+        return tbItem;
     }
 
     @Override
     public TbItemDesc findItemDescById(long id) {
-        return tbItemDescMapper.selectByPrimaryKey(id);
+        String s = jedisCluster.get("item_info:" + id + ":desc");
+        if (StringUtils.isNotBlank(s)){
+            return JsonUtils.jsonToPojo(s,TbItemDesc.class);
+        }
+        TbItemDesc tbItemDesc = tbItemDescMapper.selectByPrimaryKey(id);
+        jedisCluster.set("item_info:"+id+":desc", JsonUtils.objectToJson(tbItemDesc));
+        jedisCluster.expire("item_info:"+id+":desc", redis_itemInfo_expire);
+        return tbItemDesc;
     }
 
     @Override

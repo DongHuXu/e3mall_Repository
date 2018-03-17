@@ -1083,3 +1083,7 @@ Looking for @ControllerAdvice: WebApplicationContext for namespace 'e3search-ser
 FrameworkServlet 'e3search': initialization completed in 6854 ms
 [WARN ] 2018-03-17 14:13:15,231 method:org.springframework.web.servlet.DispatcherServlet.noHandlerFound(DispatcherServlet.java:1136)
 No mapping found for HTTP request with URI [/item/152125744869516.html] in DispatcherServlet with name 'e3search'
+[WARN ] 2018-03-17 15:11:00,460 method:org.springframework.web.servlet.DispatcherServlet.noHandlerFound(DispatcherServlet.java:1136)
+No mapping found for HTTP request with URI [/html/web/_public/_ajaxStaticMenu.html] in DispatcherServlet with name 'e3search'
+[WARN ] 2018-03-17 15:11:15,787 method:org.springframework.web.servlet.DispatcherServlet.noHandlerFound(DispatcherServlet.java:1136)
+No mapping found for HTTP request with URI [/html/web/_public/_ajaxStaticMenu.html] in DispatcherServlet with name 'e3search'
