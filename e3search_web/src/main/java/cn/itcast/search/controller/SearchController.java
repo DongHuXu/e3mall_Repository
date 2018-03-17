@@ -25,7 +25,6 @@ public class SearchController {
     SearchResultService searchResultService;
     @RequestMapping("/search")
     public String search(String keyword, @RequestParam(defaultValue = "1")int page, Model model) throws Exception {
-        int i = 1/0;
         if(StringUtils.isNotBlank(keyword)){
             String s = new String(keyword.getBytes("iso8859-1"), "utf-8");
             keyword=s;

@@ -2,14 +2,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
-    <!--&lt;!&ndash; 连接solr单机版 &ndash;&gt;
+    <!--&lt;!&ndash; 连接solr单机版 -->
     <bean id="solrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
         <constructor-arg index="0" value="http://192.168.25.128:8080/solr/collection1"/>
-    </bean>-->
+    </bean>
 
     <!-- 连接solrCloud版 -->
-    <bean id="solrServer" class="org.apache.solr.client.solrj.impl.CloudSolrServer">
-        <constructor-arg name="zkHost" value="192.168.25.128:2182,192.168.25.128:2183,192.168.25.128:2184"/>
-        <property name="defaultCollection" value="collection2"/>
-    </bean>
+
+    <!--<bean id="solrServer" class="org.apache.solr.client.solrj.impl.CloudSolrServer">-->
+        <!--<constructor-arg name="zkHost" value="192.168.25.128:2182,192.168.25.128:2183,192.168.25.128:2184"/>-->
+        <!--<property name="defaultCollection" value="collection2_shard1_replica2"/>-->
+    <!--</bean>-->
 </beans>

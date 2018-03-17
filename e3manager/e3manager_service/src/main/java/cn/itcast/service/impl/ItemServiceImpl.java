@@ -8,8 +8,12 @@ import cn.itcast.utils.IDUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import javax.jms.*;
 import java.util.Date;
 import java.util.List;
 
@@ -17,12 +21,22 @@ import java.util.List;
 public class ItemServiceImpl implements ItemService {
 
     @Autowired
+    JmsTemplate jmsTemplate;
+    @Autowired
     TbItemDescMapper tbItemDescMapper;
     @Autowired
     TbItemMapper tbItemMapper;
+
+    @Resource
+    Destination topicDestination;
     @Override
     public TbItem findTbItemById(long id) {
         return tbItemMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public TbItemDesc findItemDescById(long id) {
+        return tbItemDescMapper.selectByPrimaryKey(id);
     }
 
     @Override
@@ -54,6 +68,18 @@ public class ItemServiceImpl implements ItemService {
         tbItemDesc.setItemDesc(desc);
         tbItemDesc.setUpdated(new Date());
         tbItemDescMapper.insert(tbItemDesc);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                jmsTemplate.send(topicDestination, new MessageCreator() {
+                    @Override
+                    public Message createMessage(Session session) throws JMSException {
+                        TextMessage message = session.createTextMessage(tbItem.getId() + "");
+                        return message;
+                    }
+                });
+            }
+        }).start();
         return E3Result.ok();
     }
 

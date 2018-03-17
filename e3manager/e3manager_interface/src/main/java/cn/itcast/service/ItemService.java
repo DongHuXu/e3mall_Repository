@@ -8,6 +8,7 @@ import cn.itcast.pojo.TbItemDesc;
 public interface ItemService {
 
     TbItem findTbItemById (long id);
+    TbItemDesc findItemDescById(long id);
 
     DataGridResult findAll(int page, int rows);
 

@@ -48,6 +48,7 @@
           <element id="library" level="project" name="Maven: com.github.sgroschupf:zkclient:0.1" />
           <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:5.0.1" />
           <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:0.9.5" />
+          <element id="library" level="project" name="Maven: org.apache.activemq:activemq-all:5.11.2" />
           <element id="archive" name="e3common-1.0-SNAPSHOT.jar">
             <element id="module-output" name="e3common" />
           </element>

@@ -40,7 +40,6 @@ public class ImportItemService implements ImportItem {
                 document.addField("item_category_name", item.getCategory_name());
                 solrServer.add(document);
             }
-
             solrServer.commit();
             return E3Result.ok();
         }catch (Exception e){

@@ -10,6 +10,7 @@
         <module name="e3content_interface" />
         <module name="e3content_protal_web" />
         <module name="e3content_service" />
+        <module name="e3mall_item_web" />
         <module name="e3manager_controller" />
         <module name="e3manager_dao" />
         <module name="e3manager_interface" />
@@ -27,6 +28,7 @@
       <module name="e3content_interface" target="1.7" />
       <module name="e3content_protal_web" target="1.7" />
       <module name="e3content_service" target="1.8" />
+      <module name="e3mall_item_web" target="1.7" />
       <module name="e3manager" target="1.7" />
       <module name="e3manager_controller" target="1.7" />
       <module name="e3manager_dao" target="1.7" />

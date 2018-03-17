@@ -3,6 +3,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/../e3content/e3content_service" />
     <file type="web" url="file://$PROJECT_DIR$/../e3content_protal_web" />
+    <file type="web" url="file://$PROJECT_DIR$/../e3mall_item_web" />
     <file type="web" url="file://$PROJECT_DIR$/../e3manager/e3manager_controller" />
     <file type="web" url="file://$PROJECT_DIR$/../e3manager/e3manager_service" />
     <file type="web" url="file://$PROJECT_DIR$/../e3manager_controller" />
