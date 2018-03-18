@@ -14,6 +14,8 @@
       <module>../e3search</module>
       <module>../e3search_web</module>
       <module>../e3mall_item_web</module>
+      <module>../e3_sso</module>
+    <module>../e3sso_web</module>
   </modules>
 
   <name>Maven</name>

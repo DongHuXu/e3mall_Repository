@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../e3_sso/e3_sso.iml" filepath="$PROJECT_DIR$/../e3_sso/e3_sso.iml" />
       <module fileurl="file://$PROJECT_DIR$/../e3common/e3common.iml" filepath="$PROJECT_DIR$/../e3common/e3common.iml" />
       <module fileurl="file://$PROJECT_DIR$/../e3content/e3content.iml" filepath="$PROJECT_DIR$/../e3content/e3content.iml" />
       <module fileurl="file://$PROJECT_DIR$/../e3content/e3content_interface/e3content_interface.iml" filepath="$PROJECT_DIR$/../e3content/e3content_interface/e3content_interface.iml" />
@@ -19,6 +20,9 @@
       <module fileurl="file://$PROJECT_DIR$/../e3search_web/e3search_web.iml" filepath="$PROJECT_DIR$/../e3search_web/e3search_web.iml" />
       <module fileurl="file://$PROJECT_DIR$/../e3search/e3searchinterface/e3searchinterface.iml" filepath="$PROJECT_DIR$/../e3search/e3searchinterface/e3searchinterface.iml" />
       <module fileurl="file://$PROJECT_DIR$/../e3search/e3searchservice/e3searchservice.iml" filepath="$PROJECT_DIR$/../e3search/e3searchservice/e3searchservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../e3_sso/e3sso_interface/e3sso_interface.iml" filepath="$PROJECT_DIR$/../e3_sso/e3sso_interface/e3sso_interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../e3_sso/e3sso_service/e3sso_service.iml" filepath="$PROJECT_DIR$/../e3_sso/e3sso_service/e3sso_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../e3sso_web/e3sso_web.iml" filepath="$PROJECT_DIR$/../e3sso_web/e3sso_web.iml" />
     </modules>
   </component>
 </project>
