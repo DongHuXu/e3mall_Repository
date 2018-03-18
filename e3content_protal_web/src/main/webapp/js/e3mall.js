@@ -1,13 +1,13 @@
 var E3MALL = {
 	checkLogin : function(){
-		var _ticket = $.cookie("TT_TOKEN");
-		if(!_ticket){
+		var token = $.cookie("token");
+		if(!token){
 			return ;
 		}
 		$.ajax({
-			url : "http://localhost:8088/user/token/" + _ticket,
-			dataType : "jsonp",
-			type : "GET",
+			url : "http://localhost:8082/user/token/" + token,
+			//dataType : "jsonp",
+			type : "POST",
 			success : function(data){
 				if(data.status == 200){
 					var username = data.data.username;

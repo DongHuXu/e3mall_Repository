@@ -1,17 +1,21 @@
 package cn.itcast.sso.service.impl;
 
+import cn.itcast.jedis.JedisClient;
 import cn.itcast.mapper.TbUserMapper;
 import cn.itcast.pojo.E3Result;
 import cn.itcast.pojo.TbUser;
 import cn.itcast.pojo.TbUserExample;
 import cn.itcast.sso.service.UserService;
+import cn.itcast.utils.JsonUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,6 +29,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     TbUserMapper tbUserMapper;
 
+    @Value("${session.expire}")
+    Integer sessionExpire;
+    @Autowired
+    JedisClient jedisClient;
     @Override
     public E3Result checkName(String Param, int type) {
         TbUserExample tbUserExample = new TbUserExample();
@@ -46,6 +54,40 @@ public class UserServiceImpl implements UserService {
 
         }
         return E3Result.ok(true);
+    }
+
+    @Override
+    public E3Result getUser(String token) {
+        String json = jedisClient.hget("session:"+token, "user");
+        if (StringUtils.isBlank(json)){
+            return E3Result.build(400,"用户已过期,请您您重新登录");
+        }
+        TbUser user = JsonUtils.jsonToPojo(json, TbUser.class);
+        jedisClient.expire("session:"+token,sessionExpire);
+        return E3Result.ok(user);
+    }
+
+    @Override
+    public E3Result login(String username, String password) {
+        if (StringUtils.isBlank(username)&&StringUtils.isBlank(password)){
+            return E3Result.build(400,"用户名或者密码不能为空");
+        }
+        TbUserExample tbUserExample = new TbUserExample();
+        TbUserExample.Criteria criteria = tbUserExample.createCriteria();
+        criteria.andUsernameEqualTo(username);
+        List<TbUser> tbUsers = tbUserMapper.selectByExample(tbUserExample);
+        if (tbUsers==null||tbUsers.size()==0) {
+            return E3Result.build(400,"用户名或者密码不正确");
+        }
+        TbUser user = tbUsers.get(0);
+        if (!user.getPassword().equals(DigestUtils.md5DigestAsHex(password.getBytes()))){
+            return E3Result.build(400,"用户名或者密码不正确");
+        }
+        user.setPassword("");
+        String token = UUID.randomUUID().toString();
+        jedisClient.hset("session:"+token,"user", JsonUtils.objectToJson(user));
+        jedisClient.expire("session:"+token,sessionExpire);
+        return E3Result.ok(token);
     }
 
     @Override
